@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Axios from "axios";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+  const [nationalize, setNationalize] = useState(null);
+
+  const fetchNationality = () => {
+    Axios.get(`https://api.nationalize.io/?name=${name}`).then((res) => {
+      setNationalize(res.data);
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input
+        placeholder="type"
+        onChange={(event) => {
+          setName(event.target.value);
+        }}
+      />
+      <button onClick={fetchNationality}>Nationalize</button>
+      <p> hey: {nationalize?.country[0]}</p>
+      <p></p>
+      <p></p>
     </div>
   );
 }
