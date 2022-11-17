@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css"
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -28,7 +29,8 @@ function App() {
  
 
   return (
-    <div className="App">
+    <div className="App" >
+      <div className="container-image">
       <input
         placeholder="type"
         onChange={(event) => {
@@ -41,13 +43,14 @@ function App() {
         {nationalize.map((nation, index) => {
           return(
             <div key={index}>
-              <h2>possibility: {nation.country_id}</h2>
-              <h2>possibility: {nation.probability}</h2>
+              <p>country: {nation.country_id}</p>
+              <p>possibility: {nation.probability}</p>
             </div>
           )
         })}
       </div>
       <p></p>
+    </div>
     </div>
   );
 }
