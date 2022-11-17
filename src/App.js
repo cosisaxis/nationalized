@@ -31,20 +31,21 @@ function App() {
   return (
     <div className="App" >
       <div className="container-image">
+        <div className="national-input">
       <input
-        placeholder="type"
+        placeholder="Enter your name"
         onChange={(event) => {
           setName(event.target.value);
         }}
       />
       <button onClick={fetchNationality}>Nationalize</button>
-      
-      <div>
+      </div>
+      <div className="card-container">
         {nationalize.map((nation, index) => {
           return(
-            <div key={index}>
-              <p>country: {nation.country_id}</p>
-              <p>possibility: {nation.probability}</p>
+            <div className="card" key={index}>
+              <p>Country's ID: {nation.country_id}</p>
+              <p>Probability: {nation.probability}</p>
             </div>
           )
         })}
